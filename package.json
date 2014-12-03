@@ -1,0 +1,31 @@
+{
+  "name": "retodo",
+  "version": "0.0.0",
+  "description": "Recurring & unscheduled todo list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elfreyshira/retodo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elfreyshira/retodo/issues"
+  },
+  "homepage": "https://github.com/elfreyshira/retodo",
+  "dependencies": {
+    "browserify": "^6.3.3",
+    "del": "^0.1.3",
+    "firebase": "^2.0.5",
+    "gulp": "^3.8.10",
+    "lodash": "^2.4.1",
+    "moment": "^2.8.4",
+    "react": "^0.12.1",
+    "reactify": "^0.17.1",
+    "reflux": "^0.2.0",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}
