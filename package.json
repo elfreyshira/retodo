@@ -22,10 +22,13 @@
     "firebase": "^2.0.5",
     "gulp": "^3.8.10",
     "lodash": "^2.4.1",
-    "moment": "^2.8.4",
+    "moment": "^2.9.0",
     "react": "^0.12.1",
     "reactify": "^0.17.1",
     "reflux": "^0.2.0",
     "vinyl-source-stream": "^1.0.0"
+  },
+  "devDependencies": {
+    "lorem-ipsum": "^1.0.1"
   }
 }

@@ -10,7 +10,7 @@ var ListItem = React.createClass({
         var data = this.props.lol;
         var deeds = _.map(data.deeds, function(deed) {
             return (
-                <li>
+                <li>rm
                     <p> Date: {deed.date} </p>
                     <p> Note: {deed.text} </p>
                 </li>

@@ -9,7 +9,7 @@ var source = require('vinyl-source-stream');
  
 // Define some paths.
 var paths = {
-  app_js: ['./src/app.jsx'],
+  app_js: ['./src/app.js'],
   js: ['./src/**/*.js', './src/**/*.jsx']
 };
  
