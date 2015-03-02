@@ -19,8 +19,8 @@ function getNextDate(days) {
 // 
 // @return {String}
 // ***
-function getToday() {
-    return moment().format('YYYY-MM-DD');
+function getNow() {
+    return moment().valueOf();
 }
 
 // ***
@@ -47,7 +47,7 @@ function daysFromNow(milliseconds) {
 
 module.exports = {
     getNextDate: getNextDate,
-    getToday: getToday,
+    getNow: getNow,
     getDayFrom: getDayFrom,
     daysFromNow: daysFromNow
 }

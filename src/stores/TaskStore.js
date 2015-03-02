@@ -12,7 +12,6 @@ var dates = require('../util/dates');
 module.exports = Reflux.createStore({
     listenables: TaskActions,
     init: function() {
-
         this.userData = {};
 
         var self = this;
@@ -26,17 +25,12 @@ module.exports = Reflux.createStore({
         if (this.userData.isLoggedIn) {
             var userUID = this.userData.auth.uid;
             firebaseManager.getUserRef(userUID).on('value', function(snapshot) {
-                console.log('snapshot.val()');
-                console.log(snapshot.val());
                 self.trigger(snapshot.val());
             })
 
         }
     },
     createTask: function(taskObj) {
-        console.log('create task store!!');
-        console.log(taskObj);
-
         var creationDate = moment().valueOf();
         var nextDate = dates.getNextDate(taskObj.days);
 
@@ -53,6 +47,24 @@ module.exports = Reflux.createStore({
         if (this.userData.isLoggedIn) {
             var userUID = this.userData.auth.uid;
             firebaseManager.getUserRef(userUID).push(taskObjWithDate);
+        }
+    },
+    doTask: function(taskId, taskObj) {
+        var nextDate = dates.getNextDate(taskObj.days);
+        var previousDate = dates.getNow();
+
+        if (this.userData.isLoggedIn) {
+            var userUID = this.userData.auth.uid;
+            var taskRef = firebaseManager.getUserRef(userUID).child(taskId);
+
+            taskRef.child('nextDate').set(nextDate);
+            taskRef.child('previousDate').set(previousDate);
+        }
+    },
+    deleteTask: function(taskId) {
+        if (this.userData.isLoggedIn) {
+            var userUID = this.userData.auth.uid;
+            firebaseManager.getUserRef(userUID).child(taskId).remove();
         }
     }
 })
