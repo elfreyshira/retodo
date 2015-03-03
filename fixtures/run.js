@@ -15,21 +15,20 @@ function createRandomTask() {
 
     var howOften = Math.round(Math.random() * 4);
 
-    var deedsArr = [];
-    var latest = dateMoment;
-    while (howOften-- > 0) {
-        latest = latest.add(frequency + Math.round(Math.random()*3), 'days');
-        deedsArr.push(latest.valueOf());
-    }
-    latest = latest.add(frequency + Math.round(Math.random()*3), 'days');
+    // var deedsArr = [];
+    // var latest = dateMoment;
+    // while (howOften-- > 0) {
+    //     latest = latest.add(frequency + Math.round(Math.random()*3), 'days');
+    //     deedsArr.push(latest.valueOf());
+    // }
+    latest = dateMoment.add(frequency + Math.round(Math.random()*3), 'days');
 
     return  {
         creationDate: dateMoment.valueOf(),
         nextDate: latest.valueOf(),
         days: frequency,
         title: loremIpsum(),
-        description: loremIpsum({units:'paragraphs', count: 2}),
-        deeds: deedsArr
+        description: loremIpsum({units:'paragraphs', count: 2})
     };
 }
 

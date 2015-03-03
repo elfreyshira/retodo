@@ -3,22 +3,14 @@
 var React = require('react');
 var TaskActions = require('../../actions/TaskActions');
 var _ = require('lodash');
+var FormInteractions = require('../../mixins/FormInteractions');
 
 var CreateTask = React.createClass({
     displayName: 'CreateTask',
-    getFormValues: function(refsArray) {
-        var self = this;
-        var refsValues = _.map(refsArray, function(ref) {
-            var elem = self.refs[ref].getDOMNode();
-            var userInputValue = elem.value;
-            elem.value = '';
-            return userInputValue;
-        });
-        return _.zipObject(refsArray, refsValues);
-    },
+    mixins: [FormInteractions],
     createTask: function(evt) {
         evt.preventDefault();
-        var formValues = this.getFormValues(['title', 'description', 'days']);
+        var formValues = this.getFormValues(['title', 'description', 'days'], true);
         TaskActions.createTask(formValues);
     },
     render: function () {
@@ -35,7 +27,7 @@ var CreateTask = React.createClass({
                 </input> days
 
                 <br/>
-                <input type="submit" value="Submit"></input>
+                <button type="submit">Create Task</button>
             </form>
         );
     }

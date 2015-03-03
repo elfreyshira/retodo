@@ -66,5 +66,10 @@ module.exports = Reflux.createStore({
             var userUID = this.userData.auth.uid;
             firebaseManager.getUserRef(userUID).child(taskId).remove();
         }
+    },
+    editTask: function(taskId, taskObj) {
+        console.log('editing task!!!');
+        console.log(taskId, taskObj);
+
     }
 })
