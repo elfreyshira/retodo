@@ -46,8 +46,7 @@ var TaskList = React.createClass({
         });
 
         return (
-            <div>
-                <pre>{dataJson}</pre>
+            <div style={{margin: 'auto 20px'}}>
                 {taskList}
             </div>
         );

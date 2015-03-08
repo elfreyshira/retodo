@@ -4,7 +4,29 @@ var React = require('react');
 var dates = require('../../util/dates');
 var TaskActions = require('../../actions/TaskActions');
 var FormInteractions = require('../../mixins/FormInteractions');
+var style = require('./style');
+var headers = require('../../style/headers');
+var position = require('../../style/position');
+var csx = require('../../util/csx');
 
+
+var SplitLine = React.createClass({
+    displayName: 'SplitLine',
+    render: function () {
+        return (
+            <div style={style.line}></div>
+        );
+    }
+});
+
+var Space = React.createClass({
+    displayName: 'Space',
+    render: function () {
+        return (
+            <div style={style.space}></div>
+        );
+    }
+});
 
 var EditItem = React.createClass({
     displayName: 'EditItem',
@@ -68,16 +90,39 @@ var ShowItem = React.createClass({
         var previousDate = dates.getDayFrom(this.props.taskObj.previousDate) || 'N/A';
 
         return (
-            <div>
-                <h3>{this.props.taskObj.title}</h3>
-                <p>{this.props.taskObj.description}</p>
-                <h5>Due date: {dueDate}</h5>
-                <h5>Repeat every {this.props.taskObj.days} days</h5>
-                <h5>Last time completed: {previousDate}</h5>
+            <div style={style.taskItem}>
+                <h2 style={headers.h2}>
+                    {this.props.taskObj.title}
+                </h2>
+                <SplitLine />
+
+                <div style={style.description}>
+                    {this.props.taskObj.description}
+                </div>
+                <SplitLine />
+
+                <div style={style.info}>Due date: {dueDate}</div>
+                <div style={style.info}>Repeat every {this.props.taskObj.days} days</div>
+                <div style={style.info}>Last time completed: {previousDate}</div>
+
+                <Space />
                 <div>
-                    <button onClick={this.doTask}>Do Task</button>
-                    <button onClick={this.deleteTask}>Delete Task</button>
-                    <button onClick={this.props.toggleEditingTask}>Edit Task</button>
+                    <button style={csx(style.buttonDefault, style.doButton)} onClick={this.doTask}>
+                        DO TASK
+                    </button>
+                    <Space />
+                    <button
+                        onClick={this.deleteTask}
+                        style={csx(style.buttonDefault, style.sideButton, style.deleteButton)}
+                    >
+                        DELETE
+                    </button>
+                    <button
+                        onClick={this.props.toggleEditingTask}
+                        style={csx(style.buttonDefault, style.sideButton, style.editButton, position.pullRight)}
+                    >
+                        EDIT
+                    </button>
                 </div>
             </div>
         );
@@ -114,6 +159,7 @@ var TaskItem = React.createClass({
                 taskObj={this.props.taskObj}
                 taskId={this.props.taskId}
                 toggleEditingTask={this.toggleEditingTask}
+                style={style}
             />;
         }
     }

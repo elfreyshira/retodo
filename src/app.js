@@ -4,13 +4,14 @@ var React = require('react');
 var TaskList = require('./components/task-list');
 var Login = require('./components/login');
 var CreateTask = require('./components/create-task');
+var Body = require('./components/body');
 
 React.render(
-    <div>
+    <Body>
         <Login></Login>
         <TaskList></TaskList>
         <CreateTask></CreateTask>
-    </div>
+    </Body>
     ,
-    document.getElementById('example')
+    document.body
 );
